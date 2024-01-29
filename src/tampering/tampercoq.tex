@@ -1,0 +1,112 @@
+\documentclass[12pt]{report}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{fullpage}
+\usepackage{coqdoc}
+\usepackage{makeidx}
+\usepackage{amsmath,amssymb}
+\usepackage{url}
+\usepackage{hyperref}
+
+\iffalse
+\title{Copland Attestation Terms:\\
+  Semantics and Coq Proofs\thanks{Approved for Public Release;
+    Distribution Unlimited. Public Release Case Number 18-3576.}}
+
+\author{John D. Ramsdell\qquad\qquad Paul D. Rowe\\[3ex]
+  The MITRE Corporation}
+\fi
+
+\makeindex
+
+\begin{document}
+
+\begin{titlepage}
+  \vspace*{7ex}
+  \begin{center}\LARGE
+    Evidence Tampering and Chain of Custody\\
+    in Layered Attestations Proofs
+  \end{center}
+  \vspace{3ex}
+  \begin{center}\Large
+    Ian D. Kretz\qquad Clare C. Parran\\
+    John D. Ramsdell \qquad Paul D. Rowe\\[3ex]
+    The MITRE Corporation\\[3ex]
+    July 2023
+  \end{center}
+  \vfill The view, opinions, and/or findings contained in this report
+  are those of The MITRE Corporation and should not be construed as an
+  official Government position, policy, or decision, unless designated
+  by other documentation.\\ \copyright 2023 The MITRE Corporation.
+  Distributed under a standard, three-clause BSD license included as
+  \texttt{license.txt}.  This software was produced for the
+  U. S. Government under Basic Contract No. W56KGU-18-D-0004, and is
+  subject to the Rights in Noncommercial Computer Software and
+  Noncommercial Computer Software Documentation Clause 252.227-7014
+  (FEB 2014). Approved for Public Release; Distribution
+  Unlimited. Public Release Case Number 23-2487.
+\end{titlepage}
+
+%\maketitle
+
+\begin{abstract}
+  This document is a companion to the paper ``Evidence Tampering and
+  Chain of Custody in Layered Attestations''.  It includes Coq
+  translations of the definitions, theorems, and lemmas in the paper,
+  along with proofs of all of the theorems and lemmas.  The Coq proof
+  assistant ensures that all proof steps are valid using the logic of
+  the Calculus of Inductive Constructions.  The abstract from the
+  paper follows.
+
+  In distributed systems, trust decisions are made on the basis of
+  integrity evidence generated via remote attestation. Examples of the
+  kinds of evidence that might be collected are boot time image hash
+  values; fingerprints of initialization files for userspace
+  applications; and a comprehensive measurement of a running kernel.
+  In layered attestations, evidence is typically composed of
+  measurements of key subcomponents taken from different trust
+  boundaries within a target system. Discrete measurement evidence is
+  bundled together for appraisal by the components that collectively
+  perform the attestation.
+
+  In this paper, we initiate the study of evidence chain of custody
+  for remote attestation.  Using the Copland attestation specification
+  language, we formally define the conditions under which a runtime
+  adversary active on the target system can tamper with measurement
+  evidence.  We present algorithms for identifying all such tampering
+  opportunites for given evidence as well as tampering ``strategies''
+  by which an adversary can modify incriminating evidence without
+  being detected.  We then define a procedure for transforming a
+  Copland-specified attestation into a maximally tamper-resistant
+  version of itself.  Our efforts are intended to help attestation
+  protocol designers ensure their protocols reduce evidence tampering
+  opportunities to the smallest, most trustworthy set of components
+  possible.
+\end{abstract}
+
+\tableofcontents
+
+\coqlibrary{Introduction}{}{Introduction}
+  The paper ``Evidence Tampering and Chain of Custody in Layered
+  Attestations'' studies the chain of custody of measurements taken
+  while performing layered attestations.  It provides carefully
+  reasoned descriptions of how and when an adversary can tamper with
+  collected evidence, and ways of reducing tampering opportunities.
+  The paper includes precise mathematical description of its
+  assertions including definitions, theorems, and lemmas.  None of the
+  proofs of the theorems and lemmas are included in the paper.
+
+  This document is a companion to the above paper.  It includes Coq
+  translations of the definitions, theorems, and lemmas in the paper,
+  along with proofs of all of the theorems and lemmas.
+
+  The document is organized as is a traditional paper on
+  mathematics---items are defined before being used.  Each item from
+  the paper has an entry in the index that is included at the end of
+  this paper.
+
+\input{body}
+
+\printindex
+
+\end{document}
